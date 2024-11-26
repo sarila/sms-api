@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "root",
+    "password": "password",
+    "database": "smssystem",
+    "host": "3306",
+    "dialect": "mysql"
+  },
+  "local": {
+    "username": "root",
+    "password": "password",
+    "database": "smssystem",
+    "host": "3306",
+    "dialect": "mysql"
+  }
+}
