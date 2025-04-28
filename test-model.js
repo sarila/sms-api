@@ -25,6 +25,8 @@ const { sequelize, Province, Municipality } = require('./models');
       provinceId:  prov.id
     });
     console.log('🏙️  Created Municipality:', muni.toJSON());
+    const { Address } = require('./models');
+    Address.create({ userId: 1, provinceId: 1, municipalityId: 1, addressLine: '123 Main St' });
 
     // 5. Fetch it back with the association
     const loaded = await Municipality.findOne({
