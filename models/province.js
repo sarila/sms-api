@@ -1,7 +1,7 @@
 // const { Model, DataTypes } = require('DataTypes');
 
 module.exports = function(sequelize, DataTypes){
-    return sequelize.define(
+    const Province = sequelize.define(
         'Province',
         {
             id: {
@@ -29,4 +29,5 @@ module.exports = function(sequelize, DataTypes){
              foreignKey: 'provinceId',
              onDelete: 'SET NULL' });
     };   
+    return Province;
 }
