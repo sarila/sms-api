@@ -1,7 +1,7 @@
 // const { Model, DataTypes } = require('DataTypes');
 
 module.exports = function (sequelize, DataTypes) {
-    return sequelize.define(
+    const User =  sequelize.define(
       'User',
       {
         id: {
@@ -106,7 +106,28 @@ module.exports = function (sequelize, DataTypes) {
           type: DataTypes.DATE,
           allowNull: true
         },
+      },
+      {
+        tableName: 'users',     
+        timestamps: true        
       }
     );
+    User.associate = models => {
+      User.belongsTo(models.Role, {
+        foreignKey: 'roleId',
+        as: 'role',          // optional alias, but handy
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE'
+      });
+      User.belongsTo(models.School, {
+        foreignKey: 'schoolId',
+        as: 'school',
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE'
+      });
+    };
+
+    return User;
+
   };
   
