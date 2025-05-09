@@ -10,14 +10,14 @@ const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
 
 let sequelize;
-console.log("Using config", config);
+
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
-// console.log("this is sequqlize", sequelize);
+
 
 fs
   .readdirSync(__dirname)
@@ -34,7 +34,7 @@ fs
     db[model.name] = model;
   });
 
-console.log('Loaded models:', Object.keys(db));  
+
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
