@@ -10,7 +10,7 @@ var usersRouter = require("./routes/users");
 var authRouter = require("./routes/auth");
 var proposalRouter = require("./routes/proposals");
 var reportRouter = require("./routes/reports");
-
+var noticeRouter = require("./routes/notices");
 var app = express();
 
 // view engine setup
@@ -28,6 +28,7 @@ app.use("/users", usersRouter);
 app.use("/auth", authRouter);
 app.use("/api/proposals", proposalRouter);
 app.use("/api/reports", reportRouter);
+app.use("/api/notices", noticeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

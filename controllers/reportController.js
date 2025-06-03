@@ -16,11 +16,10 @@ const list = async (req, res) => {
 const create = async (req, res) => {
   try {
     const data = {
-      
       title: req.body.title,
       description: req.body.description,
       files: req.body.files,
-      userId: req.user.id, // Assume `req.user` is populated by your auth middleware
+      userId: req.user.id, // req.user` is populated by auth middleware
       provinceId: req.body.provinceId,
       municipalityId: req.body.municipalityId,
       schoolId: req.body.schoolId,
