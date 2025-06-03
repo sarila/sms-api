@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { User, Role } = require("../models");
-const JWT_SECRET = process.env.JWT_SECRET || "s e c r e t t t ";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const signup = async (req, res) => {
   try {
