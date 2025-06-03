@@ -36,7 +36,7 @@ const create = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const [n, [updated]] = await Proposal.update(
+    const [n] = await Proposal.update(
       {
         //returns affectedCOUNT and affectedROWS
         title: req.body.title,
@@ -50,11 +50,12 @@ const update = async (req, res) => {
         status: req.body.status,
       },
       {
-        where: { id: req.params.id, userId: req.params.userId },
+        where: { id: req.params.id, userId: req.user.id },
         returning: true,
       }
     );
     if (n == 0) return res.status(404).json({ error: "Not found/Not changed" });
+    const updated = await Proposal.findOne({ where: { id: req.params.id, userId: req.user.id } });
     res.json(updated);
   } catch (err) {
     res.status(400).json({ error: err.message });
